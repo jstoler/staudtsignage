@@ -4,7 +4,7 @@ class PinsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 50)
+    @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 12)
   end
 
   def show
@@ -36,7 +36,8 @@ class PinsController < ApplicationController
 
   def destroy
     if @pin.destroy
-    redirect_to pins_url, :notice => "Your post has been deleted"
+    redirect_to pins_url, :notice => 'Your post has been deleted'
+    end  
   end
 
   private
